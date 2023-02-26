@@ -1,8 +1,6 @@
-# VSCode ROS2 Workspace Template
+# VSCode ROS2 Workspace
 
-This template will get you set up using ROS2 with VSCode as your IDE.
-
-See [how I develop with vscode and ros2](https://www.allisonthackston.com/articles/vscode_docker_ros2.html) for a more in-depth look on how to use this workspace.
+This template will get you set up using ROS2 with VSCode as your IDE and it is based on https://github.com/athackst/vscode_ros2_workspace .
 
 ## Features
 
@@ -38,33 +36,19 @@ To remove a linter just delete it's name from this line:
 
 ### Prerequisites
 
-You should already have Docker and VSCode with the remote containers plugin installed on your system.
+You should already have Podman and VSCode with the remote containers plugin installed on your system.
 
-* [docker](https://docs.docker.com/engine/install/)
+* [podman](https://podman.io/getting-started/installation)
 * [vscode](https://code.visualstudio.com/)
 * [vscode remote containers plugin](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
-### Get the template
 
-Click on "use this template"
-
-![template_use](https://user-images.githubusercontent.com/6098197/91331899-43f23b80-e780-11ea-92c8-b4665ce126f1.png)
-
-### Create your repository
-
-On the next dialog, name the repository you would like to start and decide if you want all of the branches, or just the latest LTS: humble.
-
-![template_new](https://user-images.githubusercontent.com/6098197/91332035-713ee980-e780-11ea-81d3-13b170f568b0.png)
-
-Github will then create a new repository with the contents of this one in your account.  It grabs the latest changes as "initial commit".
-
-### Clone your repo
-
-Now you can clone your repo as normal
-
-![template_download](https://user-images.githubusercontent.com/6098197/91332342-e4e0f680-e780-11ea-9525-49b0afa0e4bb.png)
 
 ### Open it in vscode
+
+In your vscode settings set the Docker Path to `podman`:
+
+![image-20230226104808658](/home/magnago/.config/Typora/typora-user-images/image-20230226104808658.png)
 
 Now that you've cloned your repo onto your computer, you can open it in VSCode (File->Open Folder). 
 
