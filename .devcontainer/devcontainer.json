@@ -8,6 +8,10 @@
 	},
 	"remoteUser": "ros",
 	"runArgs": [
+                "--rm",
+                "--user=ros",
+                "--hostname=maila-0001",
+                "--name=maila-humble-dev",
 		"--network=host",
 		"--cap-add=SYS_PTRACE",
 		"--security-opt=seccomp:unconfined",
@@ -15,6 +19,12 @@
 		"--volume=/tmp/.X11-unix:/tmp/.X11-unix",
 		"--volume=/mnt/wslg:/mnt/wslg",
 		"--ipc=host"
+                // "--privileged",
+                // "--ulimit=host",
+                // "--pids-limit=-1",
+                // "--userns=keep-id",
+		// "--volume=/mnt/wslg:/mnt/wslg", // uncomment for windows
+		// "--volume=/tmp/.X11-unix:/tmp/.X11-unix"
 	],
 	"containerEnv": {
 		"DISPLAY": "${localEnv:DISPLAY}", // Needed for GUI try ":0" for windows
