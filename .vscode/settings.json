@@ -1,13 +1,32 @@
 {
-    "editor.tabSize": 8,
-    "editor.rulers": [
-        100
-    ],
-    "files.associations": {
-        "*.repos": "yaml",
-        "*.world": "xml",
-        "*.xacro": "xml"
+    /*---------------------- python -----------------------------------*/
+    "[python]": {
+        "editor.formatOnType": true,
+        "editor.tabSize": 4,
     },
+    "python.languageServer": "Pylance",
+    // Linting
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.maxNumberOfProblems": 50,
+    "python.linting.pylintArgs": [
+        "--load-plugins",
+        "pylint_django",
+        "--extension-pkg-whitelist=numpy,ompl",
+        "--disable=C0111", // Do not complain for missing documentation!
+    ],
+    // Typing
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    // Use the system installed version of autopep8
+    "python.formatting.autopep8Path": "/usr/bin/autopep8",
+    "python.formatting.autopep8Args": [
+        "--max-line-length=100",
+        "--aggressive"
+    ],
+    // Define python module paths.
     "python.analysis.extraPaths": [
         "/opt/ros/humble/lib/python3.10/site-packages/"
     ],
@@ -17,16 +36,38 @@
     ],
     // Environment file lets vscode find python files within workspace
     "python.envFile": "${workspaceFolder}/.env",
-    // Use the system installed version of autopep8
-    "python.formatting.autopep8Path": "/usr/bin/autopep8",
-    "python.formatting.autopep8Args": [
-        "--max-line-length=100"
-    ],
-    "C_Cpp.default.intelliSenseMode": "linux-gcc-x86",
-    "C_Cpp.formatting": "disabled",
     "uncrustify.configPath.linux": "/opt/ros/humble/lib/python3.10/site-packages/ament_uncrustify/configuration/ament_code_style.cfg",
+    /*---------------------- C++ -----------------------------------*/
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "C_Cpp.formatting": "disabled",
+    "clangd.arguments": [
+        // "-log=verbose",
+        "-pretty",
+        "--background-index",
+        "--suggest-missing-includes",
+        "--header-insertion=never",
+        "--clang-tidy"
+    ],
     "[cpp]": {
-        "editor.defaultFormatter": "zachflower.uncrustify"
+        "editor.tabSize": 2,
+    },
+    /*---------------------- General -----------------------------------*/
+    "editor.tabSize": 4,
+    "editor.rulers": [
+        100
+    ],
+    // "editor.formatOnPaste": true,
+    // "editor.formatOnType": true,
+    "breadcrumbs.enabled": true,
+    // don't save whitespace
+    "files.trimFinalNewlines": false,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "files.associations": {
+        "*.repos": "yaml",
+        "*.world": "xml",
+        "*.xacro": "xml"
     },
     "search.exclude": {
         "**/node_modules": true,
@@ -36,6 +77,10 @@
         "**/install": true,
         "**/log": true
     },
+    // Moves files/folders to the OS trash (recycle bin on Windows) when deleting.
+    // Disabling this will delete files/folders permanently.
+    "files.enableTrash": true,
+    /*---------------------- Spelling -----------------------------------*/
     "cSpell.words": [
         "RTPS",
         "athackst",

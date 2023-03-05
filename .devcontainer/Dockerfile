@@ -1,4 +1,4 @@
-FROM althack/ros2:humble-dev
+FROM docker.io/althack/ros2:humble-dev
 
 # ** [Optional] Uncomment this section to install additional packages. **
 #
@@ -6,15 +6,23 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
 #    && apt-get upgrade -y \
    && apt-get -y install --no-install-recommends \
+        # Utils
+        zsh less\
         # Dependecny for Stage package.
-        libfltk1.3-dev libgl1-mesa-dev libltdl-dev libjpeg-dev libpng-dev\
+        ros-humble-cv-bridge libfltk1.3-dev libgl1-mesa-dev libltdl-dev libjpeg-dev libpng-dev \
+        # rviz2
+        ros-humble-rviz2 \
+        # ament
+        ros-humble-ament-cmake-clang-format\
+        # Install llvm (https://apt.llvm.org/)
+        clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang\
    # Clean up
    && apt-get autoremove -y \
    && apt-get clean -y \
    && rm -rf /var/lib/apt/lists/*
+RUN /bin/python3 -m pip install pylint
 ENV DEBIAN_FRONTEND=dialog
 
-# Set up auto-source of workspace for ros user
 ARG WORKSPACE
 RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
 

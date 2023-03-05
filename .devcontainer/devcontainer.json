@@ -8,10 +8,10 @@
 	},
 	"remoteUser": "ros",
 	"runArgs": [
-                "--rm",
-                "--user=ros",
-                "--hostname=maila-0001",
-                "--name=maila-humble-dev",
+        "--rm",
+        "--user=ros",
+        "--ipc=host", // https://askubuntu.com/questions/1237400/how-to-fix-x-error-badaccess-baddrawable-badshmseg-while-running-graphical-ap
+        "--name=maila-humble-dev",
 		"--network=host",
 		"--cap-add=SYS_PTRACE",
 		"--security-opt=seccomp:unconfined",
@@ -19,10 +19,10 @@
 		"--volume=/tmp/.X11-unix:/tmp/.X11-unix",
 		"--volume=/mnt/wslg:/mnt/wslg",
 		"--ipc=host"
-                // "--privileged",
-                // "--ulimit=host",
-                // "--pids-limit=-1",
-                // "--userns=keep-id",
+        // "--privileged",
+        // "--ulimit=host",
+        // "--pids-limit=-1",
+        // "--userns=keep-id",
 		// "--volume=/mnt/wslg:/mnt/wslg", // uncomment for windows
 		// "--volume=/tmp/.X11-unix:/tmp/.X11-unix"
 	],
@@ -31,8 +31,12 @@
 		"WAYLAND_DISPLAY": "${localEnv:WAYLAND_DISPLAY}",
 		"XDG_RUNTIME_DIR": "${localEnv:XDG_RUNTIME_DIR}",
 		"PULSE_SERVER": "${localEnv:PULSE_SERVER}",
-		"LIBGL_ALWAYS_SOFTWARE": "1" // Needed for software rendering of opengl
-	},
+		"LIBGL_ALWAYS_SOFTWARE": "1", // Needed for software rendering of opengl
+                "ROS_LOCALHOST_ONLY": "1",
+                "ROS_DOMAIN_ID": "42"
+        },
+        "postCreateCommand": "sudo sh -c 'echo yaml file:///${containerWorkspaceFolder}/rosdep/maila-rosdep.yaml >> /etc/ros/rosdep/sources.list.d/10-maila.list' && rosdep update && rosdep install --from-paths src --ignore-src -y && git config --global --add safe.directory ${containerWorkspaceFolder}",
+
 	// Set *default* container specific settings.json values on container create.
 	"customizations": {
 		"vscode": {
@@ -49,7 +53,13 @@
 				"streetsidesoftware.code-spell-checker",
 				"twxs.cmake",
 				"yzhang.markdown-all-in-one",
+<<<<<<< HEAD
 				"zachflower.uncrustify"
+=======
+				"zachflower.uncrustify",
+				"betwo.b2-catkin-tools",
+                                "llvm-vs-code-extensions.vscode-clangd"
+>>>>>>> Install several dependencies.
 			]
 		}
 	}

@@ -1,0 +1,6 @@
+libltdl:
+  ubuntu:
+    jammy: [libltdl-dev]
+libpng:
+  ubuntu:
+    jammy: [libpng-dev]
