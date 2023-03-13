@@ -35,7 +35,7 @@
                 "ROS_LOCALHOST_ONLY": "1",
                 "ROS_DOMAIN_ID": "42"
         },
-        "postCreateCommand": "sudo sh -c 'echo yaml file:///${containerWorkspaceFolder}/rosdep/maila-rosdep.yaml >> /etc/ros/rosdep/sources.list.d/10-maila.list' && rosdep update && rosdep install --from-paths src --ignore-src -y && git config --global --add safe.directory ${containerWorkspaceFolder}",
+        "postCreateCommand": "sudo chmod +x ${containerWorkspaceFolder}/.devcontainer/postCreateCommand.sh && ${containerWorkspaceFolder}/.devcontainer/postCreateCommand.sh",
 
 	// Set *default* container specific settings.json values on container create.
 	"customizations": {
@@ -44,6 +44,7 @@
 				"althack.ament-task-provider",
 				"betwo.b2-catkin-tools",
 				"DotJoshJohnson.xml",
+                "llvm-vs-code-extensions.vscode-clangd",
 				"ms-azuretools.vscode-docker",
 				"ms-iot.vscode-ros",
 				"ms-python.python",
@@ -53,13 +54,7 @@
 				"streetsidesoftware.code-spell-checker",
 				"twxs.cmake",
 				"yzhang.markdown-all-in-one",
-<<<<<<< HEAD
 				"zachflower.uncrustify"
-=======
-				"zachflower.uncrustify",
-				"betwo.b2-catkin-tools",
-                                "llvm-vs-code-extensions.vscode-clangd"
->>>>>>> Install several dependencies.
 			]
 		}
 	}
