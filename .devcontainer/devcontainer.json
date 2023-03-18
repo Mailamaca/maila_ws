@@ -37,23 +37,24 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "althack.ament-task-provider",
-                "DotJoshJohnson.xml",
-                "llvm-vs-code-extensions.vscode-clangd", // C++ completion, navigation ...
-                "ms-vscode.cpptools", // C++ debugging
-                "ms-azuretools.vscode-docker",
-                "betwo.b2-catkin-tools",
-                "ms-iot.vscode-ros",
-                "ms-python.python",
-                "redhat.vscode-yaml",
-                "smilerobotics.urdf",
-                "streetsidesoftware.code-spell-checker",
-                "twxs.cmake",
-                "yzhang.markdown-all-in-one",
-                "zachflower.uncrustify",
-                "shakram02.bash-beautify", // Bash beautify
-                "ms-vsliveshare.vsliveshare" // Collaboratively edit and debug
-            ]
+				"althack.ament-task-provider",
+				"DotJoshJohnson.xml",
+				"llvm-vs-code-extensions.vscode-clangd",
+				"ms-vscode.cpptools",
+				"ms-azuretools.vscode-docker",
+				"betwo.b2-catkin-tools",
+				"ms-iot.vscode-ros",
+				"ms-python.python",
+				"redhat.vscode-yaml",
+				"smilerobotics.urdf",
+				"streetsidesoftware.code-spell-checker",
+				"twxs.cmake",
+				"yzhang.markdown-all-in-one",
+				"zachflower.uncrustify",
+				"shakram02.bash-beautify",
+				"ms-vsliveshare.vsliveshare",
+				"ms-python.pylint"
+			]
         }
     }
 }

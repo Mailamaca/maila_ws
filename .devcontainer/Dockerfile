@@ -17,7 +17,12 @@ RUN apt-get update \
    && apt-get autoremove -y \
    && apt-get clean -y \
    && rm -rf /var/lib/apt/lists/*
-RUN /bin/python3 -m pip install pylint
+
+# Python requirements
+WORKDIR /app
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+
 ENV DEBIAN_FRONTEND=dialog
 
 ARG WORKSPACE

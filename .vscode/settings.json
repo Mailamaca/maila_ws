@@ -12,7 +12,6 @@
     "python.linting.maxNumberOfProblems": 50,
     "python.linting.pylintArgs": [
         "--load-plugins",
-        "pylint_django",
         "--extension-pkg-whitelist=numpy,ompl",
         "--disable=C0111", // Do not complain for missing documentation!
     ],
