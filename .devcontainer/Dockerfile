@@ -8,7 +8,9 @@ RUN apt-get update \
    && apt-get -y install --no-install-recommends \
         ros-humble-rviz2 \
         # Utils
-        less\
+        less ipython3 \
+        # Bash script formatter.
+        shfmt \
         # Install llvm (https://apt.llvm.org/)
         clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev \
         libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 \
