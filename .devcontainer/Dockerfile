@@ -8,7 +8,7 @@ RUN apt-get update \
    && apt-get -y install --no-install-recommends \
         ros-humble-rviz2 \
         # Utils
-        less ipython3 \
+        less ipython3 python3-autopep8 \
         # Bash script formatter.
         shfmt \
         # Install llvm (https://apt.llvm.org/)
@@ -34,6 +34,7 @@ RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/in
 # https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#setup-colcon-cd
 RUN echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> /home/ros/.bashrc
 RUN echo "export _colcon_cd_root=/opt/ros/humble/" >> /home/ros/.bashrc
+RUN echo "export RCUTILS_CONSOLE_OUTPUT_FORMAT='[{severity} {time}] [{name}]: {message} ({function_name}() at {file_name}:{line_number})'"  >> /home/ros/.bashrc
 
 # Setup colcon tab completion
 # https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#setup-colcon-tab-completion
