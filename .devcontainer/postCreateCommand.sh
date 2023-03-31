@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+# https://stackoverflow.com/questions/28279862/docker-and-bash-history
+echo "export HISTFILE=~/.persistent-volume/.bash_history" >> /home/ros/.bashrc
+export HISTFILE=~/.persistent-volume/.bash_history
+touch $HISTFILE
+
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
 
 echo "Downloading maila-rosdep from maila_packages and making them available to rosdep. "
