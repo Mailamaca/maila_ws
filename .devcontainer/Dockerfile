@@ -14,7 +14,9 @@ RUN apt-get update \
         # Install llvm (https://apt.llvm.org/)
         clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev \
         libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 \
-        lld lldb llvm-dev llvm-runtime llvm python3-clang\
+        lld lldb llvm-dev llvm-runtime llvm python3-clang \
+        # Utility
+        ros-humble-ament-pycodestyle \
    # Clean up
    && apt-get autoremove -y \
    && apt-get clean -y \
@@ -25,10 +27,15 @@ WORKDIR /app
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
+# FIX  error creating runtime directory '/run/user/1000' (Permission denied)
+RUN mkdir /run/user/1000 && chown ros:ros /run/user/1000 && chmod 0700 /run/user/1000
+
 ENV DEBIAN_FRONTEND=dialog
 
 ARG WORKSPACE
 RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
+# Configure gazebo this avoid problems with the render engine of gzclient.
+RUN echo "if [ -f /usr/share/gazebo-11/setup.sh ]; then source /usr/share/gazebo-11/setup.sh; fi" >> /home/ros/.bashrc
 
 # Setup colcon cd
 # https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#setup-colcon-cd

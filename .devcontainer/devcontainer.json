@@ -16,10 +16,9 @@
         "--privileged",
         "--ulimit=host",
         "--pids-limit=-1",
-        "--userns=keep-id",
+        "--userns=keep-id"
     ],
     "mounts": [
-        // "source=/mnt/wslg:/mnt/wslg", // uncomment for windows
         "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind",
         "source=vscode-server,target=/home/ros/.vscode-server,type=volume",
         "source=persistent-volume,target=/home/ros/.persistent-volume,type=volume"

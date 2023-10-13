@@ -4,14 +4,25 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-    // Example launch of a python file
+
+    // Attach to a running process.
+    // Needs the line below in the
+    // source code.
     {
-      "name": "Python: Current File",
+      "name": "Python: Attach",
       "type": "python",
-      "request": "launch",
-      "program": "${file}",
-      "console": "integratedTerminal",
+      "request": "attach",
+      "connect": {
+        "host": "localhost",
+        "port": 5678
+      }
+      // debugpy.listen(5678)
+      // print("Waiting for debugger attach")
+      // debugpy.wait_for_client()
+      // debugpy.breakpoint()
+      // print('break on this line')
     },
+
     // Example gdb launch of a ros executable
     {
       "name": "(gdb) Launch (merge-install)",

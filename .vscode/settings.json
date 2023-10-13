@@ -1,31 +1,31 @@
 {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+
     /*---------------------- python -----------------------------------*/
     "[python]": {
         "editor.formatOnType": true,
         "editor.tabSize": 4,
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.rulers": [90,100]
     },
     "python.languageServer": "Pylance",
+
     // Linting
-    "python.linting.enabled": true,
-    "python.linting.lintOnSave": true,
-    "python.linting.pylintEnabled": true,
-    "python.linting.maxNumberOfProblems": 50,
-    "python.linting.pylintArgs": [
+    "pylint.args": [
         "--load-plugins",
         "--extension-pkg-whitelist=numpy,ompl",
-        "--disable=C0111", // Do not complain for missing documentation!
+        "--disable=C0111"
     ],
+
+    // Formatting
+    "black-formatter.args": ["--line-length", "99"],
+
     // Typing
     "python.analysis.completeFunctionParens": true,
     "python.analysis.inlayHints.functionReturnTypes": true,
     "python.analysis.inlayHints.variableTypes": true,
-    // Use the system installed version of autopep8
-    "python.formatting.provider": "autopep8",
-    "python.formatting.autopep8Path": "/usr/bin/autopep8",
-    "python.formatting.autopep8Args": [
-        "--max-line-length=100",
-        "--aggressive"
-    ],
+
     // Define python module paths.
     "python.analysis.extraPaths": [
         "/opt/ros/humble/lib/python3.10/site-packages/"
@@ -97,6 +97,7 @@
     ],
     "cSpell.words": [
         "ackermann",
+        "alsa",
         "athackst",
         "autopep",
         "bringup",
@@ -109,9 +110,11 @@
         "djikstra",
         "Djikstra",
         "Eigen",
+        "gzserver",
         "ints",
         "maila",
         "noqa",
+        "pycodestyle",
         "pytest",
         "rclcpp",
         "rclpy",
