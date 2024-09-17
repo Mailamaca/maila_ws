@@ -69,19 +69,24 @@
         "*.world": "xml",
         "*.xacro": "xml"
     },
-    "search.exclude": {
-        "./build": true,
-        "./install": true,
-        "./log": true,
-        "./cache": true,
+
+    // Exclude folder from vscode analysis.
+    "files.exclude": {
+        "build/": true,
+        "install/": true,
+        "log/": true
     },
     "files.watcherExclude": {
-        "**/.git/objects/**": true,
-        "**/.git/subtree-cache/**": true,
-        "**/build/*/**": true,
-        "**/log/*/**": true,
-        "**/install/*/**": true,
+        "build/": true,
+        "install/": true,
+        "log/": true
     },
+    "search.exclude": {
+        "build/": true,
+        "install/": true,
+        "log/": true
+    }
+
     // Moves files/folders to the OS trash (recycle bin on Windows) when deleting.
     // Disabling this will delete files/folders permanently.
     "files.enableTrash": true,
